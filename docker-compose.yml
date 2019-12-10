@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  # database:
+  #   image: mongo:latest
+  #   ports:
+  #     - 27017:27017
+  #   volumes:
+  #     - aph_data:/data/db
+
+  database:
+    image: mysql:latest
+    ports:
+      - 3306:3306
+      - 33060:33060
+    environment:
+      MYSQL_DATABASE: awx_promotion_hub
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - aph_mysql_data:/var/lib/mysql
+
+volumes:
+  aph_data:
+    external: true
+  aph_mysql_data:
+    external: true
+
+  
