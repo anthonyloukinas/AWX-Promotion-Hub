@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <%- include('../_layout/Resources.ejs') -%>
+    <link rel='stylesheet' href='/css/Global.css'>
+</head>
+
+<body>
+    <%- include('../_layout/Navigation.ejs') -%>
+    <div class="container mt-4" id="main-container">
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/admin/settings">Admin</a></li>
+                <li class="breadcrumb-item"><a href="/admin/settings/tower_clusters">Tower Clusters</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><%- tower_instance.id %></li>
+            </ol>
+        </nav>
+
+        <form method="post" action="/admin/settings/tower_clusters/<%- tower_instance.id %>">
+
+            <div class="form-group">
+                <label for="instanceName">Name</label>
+                <input type="text" class="form-control" id="instanceName" name="instanceName" value="<%- tower_instance.name %>">
+            </div>
+
+            <div class="form-group">
+                <label for="instanceProtocol">Protocol</label>
+                <select class="form-control" id="instanceProtocol" name="instanceProtocol">
+                    <option <% if (tower_instance.protocol == 'http') { %>selected<% }%> >http</option>
+                    <option <% if (tower_instance.protocol == 'https') { %>selected<% }%> >https</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="instanceHost">Host</label>
+                <input type="text" class="form-control" id="instanceHost" name="instanceHost" value="<%- tower_instance.host %>">
+            </div>
+
+            <div class="form-group">
+                <label for="instancePort">Port</label>
+                <input type="text" class="form-control" id="instancePort" name="instancePort" value="<%- tower_instance.port %>">
+            </div>
+
+            <div class="form-group">
+                <label for="instanceStrictSsl">Strict SSL</label>
+                <select class="form-control" id="instanceStrictSsl" name="instanceStrictSsl">
+                    <option <% if (tower_instance.strict_ssl == '0') { %>selected<% }%> value="0">no</option>
+                    <option <% if (tower_instance.strict_ssl == '1') { %>selected<% }%> value="1">yes</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="instanceUsername">Username</label>
+                <input type="text" class="form-control" id="instanceUsername" name="instanceUsername" value="<%- tower_instance.username %>">
+            </div>
+
+            <div class="form-group">
+                <label for="instancePassword">Password</label>
+                <input type="password" class="form-control" id="instancePassword" name="instancePassword" value="<%- tower_instance.password %>">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div> <!-- /main-container -->
+</body>
+
+</html>

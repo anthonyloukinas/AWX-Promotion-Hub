@@ -18,31 +18,11 @@ exports.getLogin = (req, res) => {
 };
 
 exports.postLogin = (req, res) => {
+    console.log(req.body);
+    res.send('we logged in!');
+};
 
-  const options = {
-      url: 'http://' + req.body.towerUsername + ':' + req.body.towerPassword + '@localhost:8080/api/v2/me/',
-      method: 'GET',
-      headers: {
-          'Accept': 'application/json'
-      }
-  };
-
-  request(options, function(err, res, body) {
-     let json = JSON.parse(body);
-     console.log(json);
-  });
-
-  const authToken = "Basic " + new Buffer(req.body.towerUsername + ":" + req.body.towerPassword).toString("base64");
-
-  request(
-      {
-          url: 'http://localhost:8080/api/v2/me',
-          headers: {
-              "Authorization": authToken
-          }
-      },
-      function (error, response, body) {
-          console.log(JSON.parse(body));
-      }
-  )
+exports.getLogout = (req, res) => {
+    req.logout();
+    res.redirect('/auth/login');
 };

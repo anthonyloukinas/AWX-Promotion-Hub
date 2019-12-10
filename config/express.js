@@ -18,6 +18,7 @@ const fs              = require('fs'),
     logger          = require('morgan'),
     cors            = require('cors'),
     favicon         = require('serve-favicon'),
+    morgan          = require('morgan'),
     cookieSession   = require('cookie-session'),
     Keygrip         = require('keygrip'),
     compression     = require('compression'),
@@ -80,6 +81,10 @@ module.exports = function() {
     // Init passport
     app.use(passport.initialize());
     app.use(passport.session());
+    app.use(flash());
+
+    // Console logging
+    app.use(morgan('tiny'));
 
     // Setup user
     app.get('*', function(req,res,next){

@@ -6,7 +6,8 @@
 /**
  * Module dependencies
  */
-const Index = require('../controllers/index.server.controller');
+const Index = require('../controllers/index.server.controller'),
+    authUtil = require('../lib/utilities/authentication');
 
 /**
  * Route Handling logic
@@ -15,6 +16,6 @@ const Index = require('../controllers/index.server.controller');
 module.exports = function(app){
 
     app.route('/')
-        .get(Index.getIndex);
+        .get(authUtil.isLoggedIn, Index.getIndex);
 
 };

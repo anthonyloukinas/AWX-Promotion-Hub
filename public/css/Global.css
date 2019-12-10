@@ -1,0 +1,35 @@
+.status-dot-success {
+    height: 20px;
+    width: 20px;
+    background-color: green;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.status-dot-danger {
+    height: 20px;
+    width: 20px;
+    background-color: red;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.status-dot-warning {
+    height: 20px;
+    width: 20px;
+    background-color: orange;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.status-color-success {
+    color: green;
+}
+
+.status-color-danger {
+    color: red;
+}
+
+.status-color-warning {
+    color: orange;
+}

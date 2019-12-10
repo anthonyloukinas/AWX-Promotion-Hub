@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <%- include('_layout/Resources.ejs') -%>
+    <link rel='stylesheet' href='/css/Main.css'>
+  </head>
+
+  <body>
+    <%- include('_layout/Navigation.ejs') -%>
+    <div class="container mt-4" id="main-container">
+
+      <h2><%- job_template.name %></h2>
+      <p>Id: <%- job_template.id %></p>
+
+      <h4>Project</h4>
+      <p>Id: <%- project.id %></p>
+      <p>Name: <%- project.name %></p>
+      <p>Scm Url: <%- project.scm_url %></p>
+      <p>Scm Branch: <%- project.scm_branch %></p>
+    </div> <!-- /main-container -->
+  </body>
+
+</html>

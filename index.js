@@ -11,16 +11,21 @@ if(!process.env.NODE_ENV){
 }
 const chalk = require('chalk');
 const config = require('./config/config');
+const scheduler = require('./lib/scheduler');
 
 // Init the express application
 const app = require('./config/express')();
 
 // Launch application on port 3000
-app.listen(config.port, () => console.log(
-  chalk.bgGreen(`[awx-promotion-hub]`),
-  chalk.bgRed(`[server]`),
-  chalk.underline(`listening on *:${config.port}`)
-));
+app.listen(config.port, () => {
+  console.log(
+      chalk.bgGreen(`[awx-promotion-hub]`),
+      chalk.bgRed(`[server]`),
+      chalk.underline(`listening on *:${config.port}`)
+  );
+
+  scheduler.scheduleJobCheckTowerConnectivity();
+});
 
 // Logging initialization
 console.log('-=========-');

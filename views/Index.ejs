@@ -1,40 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <%- include('_layout/Resources.ejs') -%>
-  <link rel='stylesheet' href='/css/Main.css'>
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <%- include('_layout/Resources.ejs') -%>
+    <link rel='stylesheet' href='/css/Main.css'>
+  </head>
 
-<body>
-  <%- include('_layout/Navigation.ejs') -%>
-  <div class="main-container">
-    <div class="row row-cards-pf">
-      <div class="col-xs-6 col-sm-4 col-md-4">
-        <div class="card-pf">
-          <div class="card-pf-heading">
-            <div class="dropdown card-pf-time-frame-filter">
-              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                Last 30 Days <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                <li class="selected"><a href="#">Last 30 Days</a></li>
-                <li><a href="#">Last 60 Days</a></li>
-                <li><a href="#">Last 90 Days</a></li>
-              </ul>
-            </div>
-            <h2 class="card-pf-title">
-              Card Title
-            </h2>
-          </div>
-          <div class="card-pf-body">
-            <p>[card contents]</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</body>
+  <body>
+    <%- include('_layout/Navigation.ejs') -%>
+    <div class="container mt-4" id="main-container">
+      <div class="table-responsive">
+
+        <table class="table table-hover" id="job-templates-table">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% job_templates.forEach(jt => { %>
+              <tr>
+                <td><%- jt.id %></td>
+                <td><a href="/job_template/<%- jt.id %>"><%- jt.name %></a></td>
+                <td><a href="/job_template/<%- jt.id %>/promote" class="btn btn-sm btn-success"><i class="fas fa-arrow-alt-circle-up"></i> Promote</a></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table> <!-- job-templates-table -->
+      </div> <!-- /table-responsive-->
+    </div> <!-- /main-container -->
+  </body>
 
 </html>

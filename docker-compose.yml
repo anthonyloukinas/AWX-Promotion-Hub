@@ -9,19 +9,31 @@ services:
   #     - aph_data:/data/db
 
   database:
-    image: mysql:latest
+    image: mysql:5.7
     ports:
       - 3306:3306
       - 33060:33060
     environment:
       MYSQL_DATABASE: awx_promotion_hub
       MYSQL_ROOT_PASSWORD: password
+      TZ: America/New_York
     volumes:
       - aph_mysql_data:/var/lib/mysql
 
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 8000:80
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      PMA_HOST: database
+      TZ: America/New_York
+    depends_on:
+      - database
+
 volumes:
-  aph_data:
-    external: true
+  # aph_data:
+  #   external: true
   aph_mysql_data:
     external: true
 

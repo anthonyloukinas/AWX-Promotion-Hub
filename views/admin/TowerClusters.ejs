@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <%- include('../_layout/Resources.ejs') -%>
+    <link rel='stylesheet' href='/css/Global.css'>
+  </head>
+
+  <body>
+    <%- include('../_layout/Navigation.ejs') -%>
+    <div class="container mt-4" id="main-container">
+
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/admin/settings">Admin</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Tower Clusters</li>
+        </ol>
+      </nav>
+
+      <div class="row">
+        <% tower_instances.forEach(instance => { %>
+        <div class="col-sm-6 mt-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><%- instance.name %></h5>
+              <p class="card-text"><%- instance.description %></p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Artifacts: 732</li>
+
+              <% if (instance.connected) { %>
+                <li class="list-group-item">Connected: <i class="fas fa-power-off status-color-success"></i></li>
+              <% } else { %>
+                <li class="list-group-item">Connected: <i class="fas fa-power-off status-color-danger"></i></li>
+              <% } %>
+            </ul>
+            <div class="card-body">
+              <a href="/admin/settings/tower_clusters/<%- instance.id %>" class="card-link"><i class="fas fa-cogs"></i> Manage</a>
+              <a href="/admin/settings/tower_clusters/<%- instance.id %>/check_in" class="card-link"><i class="fas fa-sync"></i> Force Sync</a>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">Last updated <%- instance.checked_in %></small>
+            </div>
+          </div>
+        </div>
+
+        <% })%>
+          <div class="col-sm-6 mt-4">
+            <div class="card bg-success btn text-white text-center p-3">
+              <blockquote class="blockquote mb-0">
+                <p><i class="fas fa-plus-square"></i></p>
+                <footer class=" text-white">
+                  <small>
+                    Attach a new AWX Node/Cluster
+                  </small>
+                </footer>
+              </blockquote>
+            </div>
+          </div>
+      </div>
+
+
+    </div> <!-- /main-container -->
+  </body>
+
+</html>
