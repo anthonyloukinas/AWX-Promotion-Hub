@@ -2,7 +2,7 @@
   "name": "awx-promotion-hub",
   "version": "1.0.0",
   "description": "Third party application that aids AWX object migrations from one node to another.",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
