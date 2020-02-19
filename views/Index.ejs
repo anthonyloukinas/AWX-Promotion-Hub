@@ -5,11 +5,22 @@
     <meta charset="UTF-8">
     <%- include('_layout/Resources.ejs') -%>
     <link rel='stylesheet' href='/css/Main.css'>
+    <title>AWX Promotion Hub - Job Templates</title>
   </head>
 
   <body>
     <%- include('_layout/Navigation.ejs') -%>
     <div class="container mt-4" id="main-container">
+
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item active"><a href="/">Dashboard</a></li>
+        </ol>
+      </nav>
+
+      <h3>Job Templates</h3>
+      <br />
+
       <div class="table-responsive">
 
         <table class="table table-hover" id="job-templates-table">

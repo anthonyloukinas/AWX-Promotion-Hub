@@ -15,7 +15,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/admin/settings">Admin</a></li>
                 <li class="breadcrumb-item"><a href="/admin/settings/tower_clusters">Tower Clusters</a></li>
-                <li class="breadcrumb-item active" aria-current="page"><%- tower_instance.id %></li>
+                <li class="breadcrumb-item active" aria-current="page"><%- tower_instance.name %></li>
             </ol>
         </nav>
 
@@ -60,6 +60,13 @@
             <div class="form-group">
                 <label for="instancePassword">Password</label>
                 <input type="password" class="form-control" id="instancePassword" name="instancePassword" value="<%- tower_instance.password %>">
+            </div>
+
+            <hr />
+
+            <div class="form-group">
+                <label for="instanceSecretKey">Secret Key</label>
+                <input type="password" class="form-control" id="instanceSecretKey" name="instanceSecretKey" value="<%- tower_instance.secret_key %>">
             </div>
 
             <button type="submit" class="btn btn-primary">Save</button>

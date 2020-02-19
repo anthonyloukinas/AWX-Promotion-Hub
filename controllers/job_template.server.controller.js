@@ -23,8 +23,6 @@ exports.getJobTemplate = (req, res) => {
   // Configure clients auth token with user objects stored username:password token
   client.set_token(req.user.auth_token);
 
-  client.set_tower_instance("http", "localhost", "80", false);
-
   client.get_job_template(job_template_id).then(results => {
     client.get_project(results.project).then(project => {
       res.render('Job_Template', {

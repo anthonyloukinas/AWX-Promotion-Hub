@@ -1,0 +1,58 @@
+{
+  "_from": "fernet",
+  "_id": "fernet@0.3.1",
+  "_inBundle": false,
+  "_integrity": "sha512-7KnsrcpLkUsKy6aH6Ow68hrMWhvE25rTDd3370+xVGkpqZta05cUCmdJQPyLBKTsNdPUB5NumJZBgJIJ60aQqw==",
+  "_location": "/fernet",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "fernet",
+    "name": "fernet",
+    "escapedName": "fernet",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/fernet/-/fernet-0.3.1.tgz",
+  "_shasum": "970ea51dddc34a77b8805961e05758826a9eca29",
+  "_spec": "fernet",
+  "_where": "/home/aloukinas/Documents/fernet_testing",
+  "author": {
+    "name": "csquared"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "crypto-js": "~3.1.2-1",
+    "urlsafe-base64": "1.0.0"
+  },
+  "deprecated": false,
+  "description": "Javascript implementation of Fernet symmetric encryption https://github.com/kr/fernet-spec",
+  "devDependencies": {
+    "browserify": "~2.29.1",
+    "buffer-browserify": "~0.2.2",
+    "chai": "*",
+    "mocha": "*",
+    "sinon": "*",
+    "sinon-chai": "*"
+  },
+  "keywords": [
+    "encryption",
+    "symmetric",
+    "key"
+  ],
+  "license": "MIT",
+  "main": "fernet.js",
+  "name": "fernet",
+  "scripts": {
+    "posttest": "open test.html",
+    "pretest": "browserify -s fernet fernet.js > fernetBrowser.js",
+    "test": "mocha"
+  },
+  "version": "0.3.1"
+}
