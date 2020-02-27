@@ -14,6 +14,18 @@
 
       <h2><%- job_template.name %></h2>
       <p>Id: <%- job_template.id %></p>
+      <h3>Credentials</h3>
+
+      <% job_template.summary_fields.credentials.forEach(credential => { %>
+        <p>Name: <%- credential.name %></p>
+        <p>Id: <%- credential.id %></p>
+      <% }) %>
+
+      <% creds.forEach(cred => { %>
+      
+        <%- cred %>
+        
+      <% }) %>
 
       <h4>Project</h4>
       <p>Id: <%- project.id %></p>

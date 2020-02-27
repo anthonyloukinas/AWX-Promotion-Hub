@@ -24,6 +24,7 @@ app.listen(config.port, () => {
       chalk.underline(`listening on *:${config.port}`)
   );
 
+  // TODO figure out how to kick this job off immediately upon express initing (not at the /30 min markers)
   scheduler.scheduleJobCheckTowerConnectivity();
 });
 

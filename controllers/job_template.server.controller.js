@@ -8,6 +8,9 @@
  * Module dependencies
  */
 const TowerClient = require('../lib/towerClient');
+const crypt = require('../lib/utilities/crypt');
+const database = require('../lib/postgres');
+
 
 /**
  * Handles logic for "/job_templates/:job_template_id"
@@ -24,12 +27,31 @@ exports.getJobTemplate = (req, res) => {
   client.set_token(req.user.auth_token);
 
   client.get_job_template(job_template_id).then(results => {
+    let creds = [];
+    results.summary_fields.credentials.forEach(credential => {
+      const { id } = credential;
+
+      database.queryAsync("SELECT id, name, inputs FROM main_credential WHERE id = $1", [id]).then(credential_row => {
+        let pk_id = credential_row.rows[0].id;
+        let secret_key = 'aabbcc';
+        let inputs = credential_row.rows[0].inputs;
+
+        crypt.decryptCredential(secret_key, inputs, pk_id, (error, cred) => {
+          if (error) throw error;
+          creds.push(cred);
+        });
+      }).catch(e => {
+        console.error(e);
+      });
+    });
+
     client.get_project(results.project).then(project => {
       res.render('Job_Template', {
         page_name: 'job_template',
         username: req.user.username,
         job_template: results,
-        project: project
+        project: project,
+        creds: creds
       });
     });
   }).catch(() => {

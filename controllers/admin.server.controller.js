@@ -66,9 +66,15 @@ exports.postTowerCluster = (req, res) => {
     instanceHost: host,
     instanceUsername: username,
     instancePassword: password,
-    instanceSecretKey: secret_key } = req.body;
+    instanceSecretKey: secret_key,
+    instanceDatabaseUsername: database_username,
+    instanceDatabasePassword: database_password,
+    instanceDatabaseHost: database_host,
+    instanceDatabasePort: database_port,
+    instanceDatabaseName: database_name } = req.body;
   console.log(req.body);
-  database.updateTowerInstance(id, name, protocol, host, port, strict_ssl, username, password, secret_key, function(error, results) {
+  database.updateTowerInstance(id, name, protocol, host, port, strict_ssl, username, password, secret_key,
+    database_username, database_password, database_host, database_port, database_name, function(error, results) {
     if (error) {
       console.log(error);
       res.send("error")

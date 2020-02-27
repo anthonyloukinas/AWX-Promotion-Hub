@@ -64,12 +64,40 @@
 
             <hr />
 
+            <h3>Database Settings</h3>
+            <p>These settings are not required, but filling them out allows us to decrypt credentials in your database so we can import them into your next target Tower cluster.</p>
+
+            <div class="form-group">
+                <label for="instanceDatabaseUsername">Database Username</label>
+                <input type="text" class="form-control" id="instanceDatabaseUsername" name="instanceDatabaseUsername" value="<%- tower_instance.database_username %>">
+            </div>
+
+            <div class="form-group">
+                <label for="instanceDatabasePassword">Database Password</label>
+                <input type="password" class="form-control" id="instanceDatabasePassword" name="instanceDatabasePassword" value="<%- tower_instance.database_password %>">
+            </div>
+
+            <div class="form-group">
+                <label for="instanceDatabaseHost">Database Host</label>
+                <input type="text" class="form-control" id="instanceDatabaseHost" name="instanceDatabaseHost" value="<%- tower_instance.database_host %>">
+            </div>
+
+            <div class="form-group">
+                <label for="instanceDatabasePort">Database Port</label>
+                <input type="text" class="form-control" id="instanceDatabasePort" name="instanceDatabasePort" value="<%- tower_instance.database_port %>">
+            </div>
+
+            <div class="form-group">
+                <label for="instanceDatabaseName">Database Name</label>
+                <input type="text" class="form-control" id="instanceDatabaseName" name="instanceDatabaseName" value="<%- tower_instance.database_name %>">
+            </div>
+
             <div class="form-group">
                 <label for="instanceSecretKey">Secret Key</label>
                 <input type="password" class="form-control" id="instanceSecretKey" name="instanceSecretKey" value="<%- tower_instance.secret_key %>">
             </div>
 
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="submit" class="btn btn-primary mb-2">Save</button>
         </form>
     </div> <!-- /main-container -->
 </body>
